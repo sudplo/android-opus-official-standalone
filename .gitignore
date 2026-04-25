@@ -1,0 +1,24 @@
+# Android/Gradle
+.gradle/
+build/
+.cxx/
+local.properties
+capture/
+*.aar
+*.jar
+*.apk
+
+# Gradle distribution
+gradle-8.12/
+gradle-*-bin.zip
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+*.swp
+*.bak
+
+# OS
+.DS_Store
+Thumbs.db
