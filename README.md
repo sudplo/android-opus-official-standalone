@@ -1,6 +1,10 @@
 
 # Android Opus Codec
 
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+[![Android](https://img.shields.io/badge/Platform-Android-green.svg)]()
+[![NDK](https://img.shields.io/badge/NDK-r26b%20LTS-orange.svg)]()
+
 A high-performance Android library providing a native NDK build of the Opus audio codec with Kotlin/JNI bindings.
 
 This project is based on the official upstream source code from Xiph.org (opus and libopusenc), adapted and built for modern Android environments.
