@@ -4,7 +4,7 @@
 GRADLE_VER="8.12"
 GRADLE_FOLDER="gradle-$GRADLE_VER"
 GRADLE_ZIP="gradle-$GRADLE_VER-bin.zip"
-NDK_VER="27.0.12077973"
+NDK_VER="26.1.10909125"
 CMAKE_VER="3.22.1"
 
 echo "--- Iniciando proceso de build para Android Opus Official ---"
