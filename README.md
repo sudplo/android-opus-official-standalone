@@ -1,97 +1,79 @@
-# Android Opus Official LTS (v1.5.2+)
 
-[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
-[![Android](https://img.shields.io/badge/Platform-Android-green.svg)]()
-[![NDK](https://img.shields.io/badge/NDK-r26b%20LTS-orange.svg)]()
+# Android Opus Codec
 
-A high-performance, standalone Android Library providing a secure and optimized build of the **Opus Interactive Audio Codec**. This project is built 100% upon the official source code from Xiph.org, specifically tailored for modern Android requirements.
+A high-performance Android library providing a native NDK build of the Opus audio codec with Kotlin/JNI bindings.
 
----
-
-## 🚀 Key Features
-
-*   **Official Engine**: Up-to-date implementation using `xiph/opus` and `xiph/libopusenc`.
-*   **Next-Gen Compatibility**: Fully optimized for **Android 15+** with mandatory **16KB page size alignment**.
-*   **Modern Toolchain**: Compiled using **NDK r26b LTS** (the most recent stable Long-Term Support version).
-*   **VoIP & Pro Audio Ready**:
-    *   Full control over **CBR (Constant Bitrate)** and **VBR (Variable Bitrate)**.
-    *   **DTX (Discontinuous Transmission)** support for bandwidth saving.
-    *   **In-band FEC (Forward Error Correction)** for high-quality audio under packet loss.
+This project is based on the official upstream source code from Xiph.org (opus and libopusenc), adapted and built for modern Android environments.
 
 ---
 
-## 📁 Project Architecture
+## 🚀 Features
+
+- Native Opus codec integration (Xiph.org: opus + libopusenc)
+- Android NDK build system
+- Kotlin + JNI API wrapper
+- Optimized for modern Android versions (including 16KB page alignment)
+- VoIP-ready audio processing:
+  - CBR / VBR control
+  - DTX support (bandwidth saving)
+  - In-band FEC (packet loss resilience)
+
+---
+
+## 📁 Project Structure
 
 | Folder | Description |
-| :--- | :--- |
-| `jni/` | High-performance C++ wrapper and CMake build configuration. |
-| `opus/` | Official Opus core source code (Xiph.org). |
-| `libopusenc/` | Official Opus Encoding library source (Xiph.org). |
-| `src/main/` | Clean Kotlin interface for seamless JVM/Android integration. |
+|--------|------------|
+| `jni/` | Native C++ wrapper and CMake build system |
+| `opus/` | Opus codec source (Xiph.org) |
+| `libopusenc/` | Opus encoding library (Xiph.org) |
+| `src/main/` | Kotlin API layer |
 
 ---
 
-## 🛠 Building the Project
+## 🛠 Build
 
-This project emphasizes **reproducibility**. We provide automated scripts and Docker support to ensure binary integrity across different environments.
-
-### 1. Automated Build (Recommended)
-Run the script corresponding to your operating system. It will automatically check for dependencies (Gradle), download them if necessary, and execute the build inside a Docker container.
-
-*   **Windows (PowerShell):**
-    ```powershell
-    ./build.ps1
-    ```
-*   **Linux / macOS (Bash):**
-    ```bash
-    chmod +x build.sh
-    ./build.sh
-    ```
-
-### 2. Manual Docker Execution
-If you prefer to run it manually:
+### Automated
 ```bash
-docker run --rm -v "${PWD}:/project" -w /project thyrlian/android-sdk bash -c "sdkmanager 'ndk;27.0.12077973' 'cmake;3.22.1' && export PATH=/project/gradle-8.12/bin:\$PATH && gradle clean :assembleRelease --no-daemon"
-```
+./build.sh
+./build.ps1
+````
 
-> **Result:** The generated artifact will be available at:  
-> `build/outputs/aar/android-opus-official-lts-release.aar`
+### Docker
+
+```bash
+docker run --rm -v "${PWD}:/project" -w /project thyrlian/android-sdk \
+bash -c "sdkmanager 'ndk;27.0.12077973' 'cmake;3.22.1' && gradle clean :assembleRelease"
+```
 
 ---
 
 ## 📦 Integration
 
-1.  Copy the generated `.aar` file to your project's `libs/` folder.
-2.  Add the dependency in your `build.gradle`:
-    ```gradle
-    dependencies {
-        implementation files('libs/android-opus-official-lts-release.aar')
-    }
-    ```
+```gradle
+dependencies {
+    implementation files('libs/android-opus-codec-release.aar')
+}
+```
 
-### Usage Example (Kotlin)
+---
+
+## 📱 Usage
 
 ```kotlin
-import com.theeasiestway.opus.Opus
-import com.theeasiestway.opus.Constants
-
 val opus = Opus()
 
-// 1. Initialize the Encoder (e.g., 48kHz, Mono, VoIP mode)
 opus.encoderInit(
-    Constants.SampleRate._48000(), 
-    Constants.Channels.mono(), 
+    Constants.SampleRate._48000(),
+    Constants.Channels.mono(),
     Constants.Application.voip()
 )
 
-// 2. Configure Bitrate & Complexity
 opus.encoderSetBitrate(Constants.Bitrate.instance(24000))
 opus.encoderSetComplexity(Constants.Complexity.instance(10))
 
-// 3. Process Audio (PCM ByteArray to Opus)
-val encoded: ByteArray? = opus.encode(pcmByteArray, Constants.FrameSize._480())
+val encoded = opus.encode(pcm, Constants.FrameSize._480())
 
-// 4. Release Resources
 opus.encoderRelease()
 ```
 
@@ -99,4 +81,6 @@ opus.encoderRelease()
 
 ## ⚖️ License
 
-This project is licensed under the **BSD 3-Clause License**. It incorporates source code from the Opus and libopusenc projects, which are subject to their respective licenses by Xiph.org.
+BSD-3-Clause License.
+
+Includes upstream code from Xiph.org (opus and libopusenc), each under their respective licenses.
