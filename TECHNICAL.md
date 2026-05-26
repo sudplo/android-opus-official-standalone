@@ -1,4 +1,4 @@
-# Technical Documentation: Android Opus Official LTS
+# Technical Documentation: Android Opus Codec
 
 This document provides an in-depth look at the internal architecture, design decisions, and technical specifications of the Android Opus Official LTS library.
 
@@ -62,7 +62,7 @@ The library is pre-configured for high-reliability VoIP communication:
 
 ## 6. Build Toolchain Specs
 
--   **NDK Version**: 27.0.12077973 (r27b LTS).
+-   **NDK Version**: 26.1.10909125 (r26b LTS).
 -   **ABIs Supported**: `arm64-v8a`, `armeabi-v7a`, `x86_64`.
 -   **C++ Standard**: C++17.
 -   **Optimization Level**: `-O3` (Maximum optimization for speed).
