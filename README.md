@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![Android](https://img.shields.io/badge/Platform-Android-green.svg)]()
-[![NDK](https://img.shields.io/badge/NDK-r27b%20LTS-orange.svg)]()
+[![NDK](https://img.shields.io/badge/NDK-r26b%20LTS-orange.svg)]()
 
 A high-performance, standalone Android Library providing a secure and optimized build of the **Opus Interactive Audio Codec**. This project is built 100% upon the official source code from Xiph.org, specifically tailored for modern Android requirements.
 
@@ -12,7 +12,7 @@ A high-performance, standalone Android Library providing a secure and optimized 
 
 *   **Official Engine**: Up-to-date implementation using `xiph/opus` and `xiph/libopusenc`.
 *   **Next-Gen Compatibility**: Fully optimized for **Android 15+** with mandatory **16KB page size alignment**.
-*   **Modern Toolchain**: Compiled using **NDK r27b LTS** (the most recent stable Long-Term Support version).
+*   **Modern Toolchain**: Compiled using **NDK r26b LTS** (the most recent stable Long-Term Support version).
 *   **VoIP & Pro Audio Ready**:
     *   Full control over **CBR (Constant Bitrate)** and **VBR (Variable Bitrate)**.
     *   **DTX (Discontinuous Transmission)** support for bandwidth saving.
